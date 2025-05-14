@@ -1,0 +1,1 @@
+let () = print_endline "Debut du projet de compilateur de C++ en OCaml !"

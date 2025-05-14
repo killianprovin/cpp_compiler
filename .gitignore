@@ -1,0 +1,31 @@
+# OCaml build artifacts
+_build/
+*.exe
+*.cmo
+*.cmi
+*.cma
+*.cmx
+*.cmxs
+*.o
+*.annot
+*.output
+
+# Menhir & ocamllex outputs
+parser.ml
+parser.mli
+lexer.ml
+
+# Coq build
+*.vo
+*.vos
+*.vok
+*.glob
+*.aux
+*.cache
+.coq-native/
+
+# Editor / OS files
+*.swp
+*~
+.DS_Store
+
