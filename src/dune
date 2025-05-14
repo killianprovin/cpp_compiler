@@ -1,4 +1,4 @@
-(executables
- (names cpp)
- (modules cpp mips)
-)
+(library
+ (name cpp_compiler)
+ (modules mips)
+ (public_name cpp_compiler))

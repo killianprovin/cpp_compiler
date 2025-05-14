@@ -1,4 +1,4 @@
-open Mips
+open Cpp_compiler.Mips
 
 let exemple : program = {
   text = [

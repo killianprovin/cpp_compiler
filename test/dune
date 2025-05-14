@@ -1,2 +1,4 @@
 (test
- (name test_cpp_compiler))
+ (name test_mips_gen)
+ (modules test_mips_gen)
+ (libraries cpp_compiler))
