@@ -10,6 +10,7 @@ type arith = Add | Sub | Mul | Div | And | Or | Slt | Nor
 type instruction =
   | Move of register * register
   | Li of register * int
+  | La of register * string
   | Lw of register * address
   | Sw of register * address
   | Arith of arith * register * register * register
@@ -32,8 +33,6 @@ type program = {
   text : instruction list;
   data : data list;
 }
-
-open Format
 
 let string_register = function
   | A0 -> "$a0"
@@ -66,6 +65,8 @@ let string_instruction = function
       "\tmove\t"^(string_register dst)^", "^(string_register src)
   | Li (r, i) ->
      "\tli\t"^(string_register r)^", "^(string_of_int i)
+  | La (r, s) ->
+    "\tla\t"^(string_register r)^", "^s
   | Lw (r, a) ->
     "\tlw\t"^(string_register r)^","^(string_address a)
   | Sw (r, a) ->
@@ -78,7 +79,7 @@ let string_instruction = function
   | J s -> "\tj\t"^s
   | Jr r -> "\tjr\t"^(string_register r)
   | Syscall -> "\tsyscall"
-  | Comment s ->  "\t "^s
+  | Comment s ->  "\t #"^s
   | Label s ->  s^":"
   | Beq(r1, r2, a) ->
     "\tbeq\t"^(string_register r1)^","^(string_register r2)^","^(string_address a)
@@ -88,7 +89,7 @@ let string_instruction = function
     "\tdiv\t"^(string_register r1)^","^(string_register r2)
 let string_data = function
   | Asciiz (l, s) -> 
-      l^":\t.asciiz '"^(String.escaped s)^"'"
+      l^":\t.asciiz \""^(String.escaped s)^"\""
   | Word (l, n) ->
      l^": \t.word "^(string_of_int n)
 let print_program p out_filename =
