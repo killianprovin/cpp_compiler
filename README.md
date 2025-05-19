@@ -11,15 +11,3 @@ Un compilateur C++ simplifié en OCaml.
 ```bash
 dune build
 ```
-
-## Tests
-```bash
-# Tester l'analyseur lexical
-dune exec test/test_lexer.exe examples/valid.cpp
-
-# Tester l'analyseur syntaxique
-dune exec test/test_parser.exe examples/valid.cpp
-
-# Tester la génération de code MIPS
-dune exec test/test_mips_gen.exe
-```
