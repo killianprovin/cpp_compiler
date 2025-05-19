@@ -1,4 +1,8 @@
+(ocamllex
+ (modules lexer))
+(menhir
+ (modules parser))
 (library
  (name cpp_compiler)
- (modules mips)
+ (modules lexer parser ast mips)
  (public_name cpp_compiler))

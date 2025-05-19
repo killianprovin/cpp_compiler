@@ -1,5 +1,5 @@
 	.data
-msg:	.asciiz "Fin du programme !"
+msg:	.asciiz "\nFin du programme !\n"
 	.text
 	 #Programme : addition + boucle conditionnelle
 main:
